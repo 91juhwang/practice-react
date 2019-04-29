@@ -1,11 +1,11 @@
-import React from "react";
+import React, {Component} from "react";
 
-const TodoItem = () => {
-  return(
-    <div className="todo-item">
-      <input type="checkbox" />
-      <p>Placeholder Text</p>
-    </div>
-  )
+const TodoItem = (props) => {
+    return(
+      <div className="todo-item">
+        <input type="checkbox" checked={props.item.completed} onChange={() => props.handleChange(props.item.id)}/>
+        <p>{props.item.content}</p>
+      </div>
+    )
 }
 export default TodoItem

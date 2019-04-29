@@ -58,3 +58,7 @@ input[type=checkbox] {
 input[type=checkbox]:focus {
   outline: 0;
 }
+
+.top-border {
+  border-top: 1px solid black;
+}
