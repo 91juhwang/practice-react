@@ -9,6 +9,7 @@ import ContactCard from "./components/ContactCard"
 import Joke from "./components/Joke"
 import Product from "./components/Product"
 import Conditional from "./components/Conditional"
+import MemeGenerator from "./components/MemeGenerator"
 
 import jokesData from "./constants/jokesdata"
 import contacts from "./constants/contacts"
@@ -37,8 +38,12 @@ class App extends Component {
       todos: todoData,
       isLoading: true,
       character: {},
+      firstName: "",
+      lasttName: "",
+      email: "",
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleTextChange = this.handleTextChange.bind(this)
   }
 
   handleChange(id) {
@@ -64,7 +69,14 @@ class App extends Component {
           character: data,
         })
       })
+  }
 
+  handleTextChange(event) {
+    const {name, value} =  event.target
+
+    this.setState({
+      [name]: value,
+    })
   }
 
   render() {
@@ -93,6 +105,20 @@ class App extends Component {
         <Nav />
         <Title />
         <Clock />
+        <MemeGenerator />
+        <form>
+          <input type="text" value={this.state.firstName} name="firstName" placeholder="text" onChange={this.handleTextChange}></input>
+          <br />
+          <input type="text" value={this.state.lastName} name="lastName" placeholder="text" onChange={this.handleTextChange}></input>
+          <br />
+          <input type="text" value={this.state.email} name="email" placeholder="text" onChange={this.handleTextChange}></input>
+          <br />
+          <h1>
+            {this.state.firstName}
+            {this.state.lastName}
+            {this.state.email}
+          </h1>
+        </form>
         {this.state.character.name}
         {TodoItemComponents}
         <Footer />
